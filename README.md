@@ -79,7 +79,7 @@ Dưới đây là kết quả của dự án:
 
 *Hình 5: ROC của dataset*
 
-![Kết quả minh họa](images\Figure_6.png)
+![Kết quả minh họa](images/Figure_6.png)
 *Hình 6: Metric của dataset*
 
 ## Tổng hợp kết quả
