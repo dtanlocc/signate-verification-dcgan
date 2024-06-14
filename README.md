@@ -18,23 +18,24 @@ Dự án này nhằm mục đích áp dụng DCGAN để tạo model dự đoán
 
 1. **Clone repo từ GitHub:**
 
-    \```sh
+    ```sh
     git clone https://github.com/dtanlocc/signate-verification-dcgan.git
     cd repository
-    \```
+    ```
 
 2. **Tạo virtual environment (môi trường ảo) và kích hoạt nó:**
 
-    \```sh
+    ```sh
     python -m venv env
     source env/bin/activate  # Trên Windows sử dụng: env\\\\Scripts\\\\activate
-    \```
+    ```
 
 3. **Cài đặt các gói yêu cầu:**
 
-    \```sh
-    pip install -r requirements.txt
-    \```
+```sh
+pip install -r requirements.txt
+```
+
 4. **Download dataset từ Kaggle:**
 
     Tập dữ liệu sử dụng trong dự án này có thể được tải xuống từ Kaggle: [Handwritten Signature Datasets](https://www.kaggle.com/datasets/ishanikathuria/handwritten-signature-datasets).
@@ -43,9 +44,9 @@ Dự án này nhằm mục đích áp dụng DCGAN để tạo model dự đoán
 
 Sau khi cài đặt các yêu cầu, bạn có thể chạy dự án bằng cách sử dụng lệnh sau:
 
-\```sh
+``` sh
 python main.py
-\```
+```
 
 Thay đổi \`root\` và \'dataset_name\' bằng root và dataset_name cần thiết để phù hợp với dataset của bạn
 
@@ -55,26 +56,26 @@ Dưới đây là kết quả của dự án:
 
 ### Dataset CEDAR
 
-![Kết quả minh họa](images\Figure_1.png)
+![Kết quả minh họa](images/Figure_1.png)
 
 *Hình 1: ROC của dataset*
 
-![Kết quả minh họa](images\Figure_4.png)
+![Kết quả minh họa](images/Figure_4.png)
 *Hình 2: Metric của dataset*
 
 
 ### Dataset BHSig260-Hindi
 
-![Kết quả minh họa](images\Figure_2.png)
+![Kết quả minh họa](images/Figure_2.png)
 
 *Hình 3: ROC của dataset*
 
-![Kết quả minh họa](images\Figure_5.png)
+![Kết quả minh họa](images/Figure_5.png)
 *Hình 4: Metric của dataset*
 
 ### Dataset BHSig260-Bengali
 
-![Kết quả minh họa](images\Figure_3.png)
+![Kết quả minh họa](images/Figure_3.png)
 
 *Hình 5: ROC của dataset*
 
