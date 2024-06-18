@@ -1,1 +1,3 @@
-from .plot import visualize_metrics_seaborn
+from .metrics_plot import visualize_metrics_seaborn
+from .confusion_plot import plot_confusion_matrix
+from .ROC_AUC_plot import plot_roc_curve

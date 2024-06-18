@@ -1,7 +1,8 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
+# import os
 
-def visualize_metrics_seaborn(metrics):
+def visualize_metrics_seaborn(metrics, save_path):
     metrics_names = list(metrics.keys())
     metrics_values = list(metrics.values())
 
@@ -16,4 +17,8 @@ def visualize_metrics_seaborn(metrics):
     for i, value in enumerate(metrics_values):
         plt.text(i, value + 0.01, f'{value:.2f}', ha='center', va='bottom')
 
-    plt.show()
+    # os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    # plt.show()
+    print(save_path)
+    plt.savefig(save_path)
+    plt.close()

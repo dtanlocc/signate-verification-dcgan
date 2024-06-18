@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-def train_dcgan(generator, discriminator, train_loader, beta1, epochs, lr, device, criterion, optimizerD, optimizerG):
+def train_dcgan(generator, discriminator, train_loader, epochs, device, criterion, optimizerD, optimizerG):
     for epoch in range(epochs):
         for i, (real_images, labels) in enumerate(train_loader):
             batch_size = real_images.size(0)
@@ -15,7 +15,7 @@ def train_dcgan(generator, discriminator, train_loader, beta1, epochs, lr, devic
             outputs = discriminator(real_images).view(-1)
             d_loss_real = criterion(outputs, labels)
             d_loss_real.backward()
-            optimizerD.step()
+            # optimizerD.step()
 
             z = torch.randn(batch_size, 100, 1, 1).to(device)
             fake_images = generator(z)
@@ -31,6 +31,6 @@ def train_dcgan(generator, discriminator, train_loader, beta1, epochs, lr, devic
             g_loss.backward()
             optimizerG.step()
 
-            print(f"Epoch [{epoch}/{epochs}] Batch {i}/{len(train_loader)} Loss D: {d_loss.item()} Loss G: {g_loss.item()}")
+            print(f"Epoch [{epoch+1}/{epochs}] Batch {i+1}/{len(train_loader)} Loss D: {d_loss.item()} Loss G: {g_loss.item()}")
 
     return generator, discriminator

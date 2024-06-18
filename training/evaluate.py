@@ -1,10 +1,14 @@
 import torch
-from sklearn.metrics import classification_report, roc_curve, auc
+from sklearn.metrics import classification_report, roc_curve, auc, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+import os
 
-def evaluate_model(discriminator, test_loader, device):
+from project.utils import plot_roc_curve
+
+
+def evaluate_model(discriminator, test_loader, device: str, save_dir: str, save_name: str):
     all_labels = []
     all_predictions = []
     discriminator.eval()
@@ -21,17 +25,8 @@ def evaluate_model(discriminator, test_loader, device):
     optimal_idx = np.argmax(tpr - fpr)
     optimal_threshold = thresholds[optimal_idx]
 
-    plt.figure()
-    plt.plot(fpr, tpr, color='darkorange', lw=2, label='ROC curve (area = %0.2f)' % roc_auc)
-    plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
-    plt.scatter(fpr[optimal_idx], tpr[optimal_idx], marker='o', color='black', label='Optimal threshold = %0.2f' % optimal_threshold)
-    plt.xlim([0.0, 1.0])
-    plt.ylim([0.0, 1.05])
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title('Receiver Operating Characteristic (ROC) Curve')
-    plt.legend(loc="lower right")
-    plt.show()
+    plot_file_path = save_dir+save_name
+    plot_roc_curve(fpr, tpr, roc_auc, optimal_idx, optimal_threshold, plot_file_path)
 
     all_predictions = [1 if x > optimal_threshold else 0 for x in all_predictions]
     classification_reports = classification_report(all_labels, all_predictions)
